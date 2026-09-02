@@ -1,0 +1,6 @@
+{
+  "name": "Free Learning Platforms",
+  "description": "Access your favourite educational platforms from one place. 100% Free.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
