@@ -1,0 +1,6 @@
+{
+  "name": "Unacademy",
+  "description": "Unacademy free batch learning platform featuring video lecture player, side-by-side scrolling categories and UPSC courses, course enrollment, educators directory, and telegram/whatsapp community.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
