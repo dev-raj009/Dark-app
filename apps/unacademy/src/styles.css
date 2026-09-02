@@ -1,0 +1,356 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+  --color-brand: var(--brand);
+  --color-brand-2: var(--brand-2);
+  --color-telegram: var(--telegram);
+  --color-whatsapp: var(--whatsapp);
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --radius: 1rem;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #08bd80;
+  --primary-foreground: #ffffff;
+  --secondary: #f8fafc;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #0ea5e9;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #08bd80;
+  --glass: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(226, 232, 240, 0.8);
+  --brand: #08bd80;
+  --brand-2: #0284c7;
+  --telegram: #229ed9;
+  --whatsapp: #25d366;
+  --shadow-glass: 0 10px 30px -10px rgba(0, 0, 0, 0.07);
+  --gradient-brand: linear-gradient(135deg, #08bd80 0%, #0284c7 100%);
+  --gradient-veil: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.82) 100%);
+}
+
+.dark {
+  --background: oklch(0.16 0.02 265);
+  --foreground: oklch(0.97 0.005 260);
+  --card: oklch(0.21 0.023 265);
+  --card-foreground: oklch(0.97 0.005 260);
+  --popover: oklch(0.2 0.023 265);
+  --popover-foreground: oklch(0.97 0.005 260);
+  --primary: oklch(0.66 0.21 27);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.27 0.025 265);
+  --secondary-foreground: oklch(0.97 0.005 260);
+  --muted: oklch(0.27 0.025 265);
+  --muted-foreground: oklch(0.72 0.02 260);
+  --accent: oklch(0.78 0.15 62);
+  --accent-foreground: oklch(0.18 0.02 265);
+  --destructive: oklch(0.68 0.2 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(1 0 0 / 11%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.66 0.21 27);
+  --glass: oklch(0.24 0.025 265 / 58%);
+  --glass-border: oklch(1 0 0 / 12%);
+  --shadow-glass: 0 22px 60px -20px oklch(0 0 0 / 65%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(
+        60rem 40rem at 10% -10%,
+        color-mix(in oklab, var(--brand) 18%, transparent),
+        transparent 60%
+      ),
+      radial-gradient(
+        50rem 35rem at 110% 10%,
+        color-mix(in oklab, var(--brand-2) 16%, transparent),
+        transparent 60%
+      );
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--brand) 45%, transparent);
+    border-radius: 99px;
+  }
+}
+
+@utility glass {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    0 12px 32px -8px rgba(15, 23, 42, 0.06),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95);
+}
+
+@utility glass-modal {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(28px) saturate(210%);
+  -webkit-backdrop-filter: blur(28px) saturate(210%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 25px 60px -15px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(226, 232, 240, 0.6),
+    inset 0 1.5px 1px rgba(255, 255, 255, 1);
+}
+
+@utility glass-drawer {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border-right: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    25px 0 60px -10px rgba(15, 23, 42, 0.15),
+    inset 1px 0 0 rgba(255, 255, 255, 0.95);
+}
+
+@utility glass-button {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px) saturate(190%);
+  -webkit-backdrop-filter: blur(16px) saturate(190%);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow:
+    0 2px 6px -2px rgba(15, 23, 42, 0.05),
+    inset 0 1px 0.5px rgba(255, 255, 255, 0.95);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    background: rgba(255, 255, 255, 0.98);
+    border-color: rgba(16, 185, 129, 0.5);
+    box-shadow:
+      0 6px 18px -4px rgba(16, 185, 129, 0.22),
+      inset 0 1px 0 #ffffff;
+    transform: translateY(-1px);
+  }
+  &:active {
+    transform: translateY(0) scale(0.97);
+  }
+}
+
+@utility glass-button-emerald {
+  background: linear-gradient(135deg, rgba(8, 189, 128, 0.94) 0%, rgba(2, 132, 199, 0.94) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 6px 18px -4px rgba(8, 189, 128, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #ffffff;
+  &:hover {
+    background: linear-gradient(135deg, rgba(8, 189, 128, 1) 0%, rgba(2, 132, 199, 1) 100%);
+    box-shadow:
+      0 10px 24px -4px rgba(8, 189, 128, 0.55),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    transform: translateY(-1px) scale(1.01);
+  }
+  &:active {
+    transform: translateY(0) scale(0.97);
+  }
+}
+
+@utility glass-button-whatsapp {
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.95) 0%, rgba(18, 140, 126, 0.95) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 6px 20px -4px rgba(37, 211, 102, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  color: #ffffff;
+  &:hover {
+    box-shadow:
+      0 10px 26px -4px rgba(37, 211, 102, 0.58),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transform: translateY(-1px) scale(1.01);
+  }
+  &:active {
+    transform: translateY(0) scale(0.97);
+  }
+}
+
+@utility glass-container {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(26px) saturate(190%);
+  -webkit-backdrop-filter: blur(26px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow:
+    0 16px 36px -12px rgba(15, 23, 42, 0.06),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95);
+}
+
+@utility glass-card-interactive {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow:
+    0 6px 18px -6px rgba(15, 23, 42, 0.04),
+    inset 0 1px 0.5px rgba(255, 255, 255, 0.95);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  &:hover {
+    background: rgba(255, 255, 255, 0.98);
+    border-color: rgba(16, 185, 129, 0.5);
+    box-shadow:
+      0 12px 28px -8px rgba(16, 185, 129, 0.2),
+      inset 0 1px 0 #ffffff;
+    transform: translateY(-2px);
+  }
+}
+
+@utility glass-hover {
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.25s,
+    border-color 0.25s;
+  &:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--brand) 55%, transparent);
+    box-shadow: 0 26px 60px -22px color-mix(in oklab, var(--brand) 55%, transparent);
+  }
+}
+
+@utility text-gradient {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-brand-gradient {
+  background: var(--gradient-brand);
+}
+
+@utility veil {
+  background: var(--gradient-veil);
+}
+
+@utility shimmer {
+  background: linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--muted) 60%, transparent) 25%,
+    color-mix(in oklab, var(--muted-foreground) 18%, transparent) 37%,
+    color-mix(in oklab, var(--muted) 60%, transparent) 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-rev {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@utility marquee-track {
+  animation: marquee 45s linear infinite;
+}
+
+@utility marquee-track-rev {
+  animation: marquee-rev 55s linear infinite;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
